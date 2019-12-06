@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wcms.dao.IUserDao">
+
+	<resultMap id="BaseResultMap" type="com.wcms.model.UserEntity">
+	    <id column="user_id" jdbcType="INTEGER" property="userId" />
+	    <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+	    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+	    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+	    <result column="user_birthday" jdbcType="DATE" property="userBirthday" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+	    user_id, user_code, user_name, user_pwd, user_birthday
+	</sql>
+	
+	
+	<select id="selectAll" resultMap="BaseResultMap">
+	    select 
+	    <include refid="Base_Column_List" />
+	    from user
+	</select>
+    <!-- <insert id="addUser" parameterType="com.bug.model.user.UserVO">
+        insert into user_t
+        (
+            user_id,
+            user_name,
+            password
+        )
+        values
+        (
+            #{user.userId,jdbcType=VARCHAR},
+            #{user.userName,jdbcType=VARCHAR},
+            #{user.password,jdbcType=VARCHAR}
+        )
+    </insert> -->
+</mapper>
